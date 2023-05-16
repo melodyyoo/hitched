@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
         isDate:true,
         isAfterStartDate(value){
           if(value < this.startDate){
-            throw new Error('Start date must be before end date'); 
+            throw new Error('Start date must be before end date');
           }
         }
       }
@@ -43,3 +43,5 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Booking;
 };
+
+
