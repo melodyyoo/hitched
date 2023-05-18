@@ -21,13 +21,13 @@ module.exports = (sequelize, DataTypes) => {
     spotId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     startDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       validate:{
         isDate: true
       }
     },
     endDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       validate:{
         isDate:true,
         isAfterStartDate(value){
@@ -43,5 +43,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Booking;
 };
-
-
