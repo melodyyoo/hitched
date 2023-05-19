@@ -9,7 +9,7 @@ const { validateQuery } = require("../../utils/validation");
 
 //get all spots
 router.get("/", async (req, res) => {
-    const options = validateQuery(req.query)
+  const options = validateQuery(req.query);
   const spots = await Spot.findAll(options);
 
   const updatedSpots = [];
@@ -39,7 +39,7 @@ router.get("/", async (req, res) => {
     updatedSpots.push(spot.toJSON());
   }
 
-  res.json({ Spots: updatedSpots, page: parseInt(req.query.page), size: parseInt(req.query.size)});
+  res.json({ Spots: updatedSpots, page: parseInt(req.query.page), size: parseInt(req.query.size) });
 });
 
 //get all spots owned by the current user
@@ -216,9 +216,12 @@ router.get("/:spotId/reviews", async (req, res, next) => {
       where: {
         spotId: req.params.spotId,
       },
-      include: { model: User, attributes: ["id", "firstName", "lastName"] },
-      include: { model: ReviewImage, attributes: ["id", "url"] },
+      include: [
+        { model: User, attributes: ["id", "firstName", "lastName"] },
+        { model: ReviewImage, attributes: ["id", "url"] },
+      ],
     });
+    console.log(reviews);
 
     res.json({ Reviews: reviews });
   } else {
