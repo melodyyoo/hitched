@@ -3,11 +3,14 @@ const router = express.Router();
 
 const { Spot, SpotImage, User, Review, ReviewImage, Booking } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
+
 const { Op } = require("sequelize");
+const { validateQuery } = require("../../utils/validation");
 
 //get all spots
-router.get("/", async (req, res, next) => {
-  const spots = await Spot.findAll();
+router.get("/", async (req, res) => {
+    const options = validateQuery(req.query)
+  const spots = await Spot.findAll(options);
 
   const updatedSpots = [];
 
@@ -36,7 +39,7 @@ router.get("/", async (req, res, next) => {
     updatedSpots.push(spot.toJSON());
   }
 
-  res.json({ Spots: updatedSpots });
+  res.json({ Spots: updatedSpots, page: parseInt(req.query.page), size: parseInt(req.query.size)});
 });
 
 //get all spots owned by the current user
@@ -382,20 +385,20 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
         }
 
         if (reqStart <= end && reqStart >= start) {
-            bookingConflict.errors.startDate = "Start date conflicts with an existing booking";
+          bookingConflict.errors.startDate = "Start date conflicts with an existing booking";
         }
 
-        if(reqStart <= start && reqEnd >= end){
-            bookingConflict.errors.startDate = "Start date conflicts with an existing booking";
-            bookingConflict.errors.endDate = "End date conflicts with an existing booking";
+        if (reqStart <= start && reqEnd >= end) {
+          bookingConflict.errors.startDate = "Start date conflicts with an existing booking";
+          bookingConflict.errors.endDate = "End date conflicts with an existing booking";
         }
 
         if (Object.keys(bookingConflict.errors).length) {
           res.status(400);
           return res.json(bookingConflict);
         }
-    }
-    //success
+      }
+      //success
       const newBooking = await Booking.create({
         spotId: parseInt(req.params.spotId),
         userId: req.user.id,
