@@ -45,7 +45,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
   const reqStart = new Date(startDate).getTime();
   const reqEnd = new Date(endDate).getTime();
 
-  if (today > reqEnd) {
+  if (today > new Date(booking.endDate).getTime()) {
     return res.status(403).json({ message: "Past bookings can't be modified" });
   }
 
@@ -66,7 +66,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     where: { spotId: booking.spotId },
     attributes: ["endDate", "startDate"],
   });
-  console.log(bookings);
+
 
   for (let i = 0; i < bookings.length; i++) {
     const booking = bookings[i];
@@ -95,7 +95,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
 
   const newBooking = await booking.set({
     startDate,
-    endDate,
+    endDate
   });
 
   await newBooking.save();
