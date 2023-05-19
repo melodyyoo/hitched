@@ -45,7 +45,7 @@ router.get("/", async (req, res) => {
 //get all spots owned by the current user
 router.get("/current", requireAuth, async (req, res, next) => {
   const spots = await Spot.findAll({
-    where: { id: req.user.id },
+    where: { ownerId: req.user.id },
   });
 
   const updatedSpots = [];
@@ -120,7 +120,7 @@ router.post("/", requireAuth, async (req, res, next) => {
   }
 
   if (!city) {
-    error.errors.address = "City is required";
+    error.errors.city = "City is required";
   }
 
   if (!state) {
@@ -477,7 +477,6 @@ router.put("/:spotId", requireAuth, async (req, res, next) => {
         ownerId: req.user.id,
       });
       await spot.save();
-      res.status(201);
       res.json(spot);
     } else {
       res.status(403);
