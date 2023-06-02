@@ -30,6 +30,13 @@ export const actionSetSessionUser = user => {
     return response;
   };
 
+  export const thunkRestoreUser = () => async (dispatch) => {
+    const response = await csrfFetch("/api/session");
+    const data = await response.json();
+    dispatch(actionSetSessionUser(data.user));
+    return response;
+  };
+
   const initialState = {user:null};
 
 
