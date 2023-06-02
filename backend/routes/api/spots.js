@@ -176,8 +176,6 @@ router.post("/", requireAuth, async (req, res, next) => {
 router.post("/:spotId/images", requireAuth, async (req, res, next) => {
   const spot = await Spot.findByPk(req.params.spotId);
 
-  console.log(spot);
-
   if (spot) {
     if (spot.dataValues.ownerId === req.user.id) {
       const { url, preview } = req.body;
@@ -221,7 +219,6 @@ router.get("/:spotId/reviews", async (req, res, next) => {
         { model: ReviewImage, attributes: ["id", "url"] },
       ],
     });
-    console.log(reviews);
 
     res.json({ Reviews: reviews });
   } else {
