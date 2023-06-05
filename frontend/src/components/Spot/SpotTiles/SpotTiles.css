@@ -1,0 +1,8 @@
+.spot-tiles{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap:wrap;
+
+    /* margin: 0 20px; */
+}
