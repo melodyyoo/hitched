@@ -1,27 +1,23 @@
 import { useEffect, useState } from "react";
 import SpotTile from "../SpotTile";
 import { csrfFetch } from "../../../store/csrf";
-import './SpotTiles.css'
+import "./SpotTiles.css";
+import { useDispatch, useSelector } from "react-redux";
+import { thunkGetAllSpots } from "../../../store/spots";
 
 const SpotTiles = () => {
-  const [spots, setSpots] = useState([]);
+  const dispatch = useDispatch();
+  const spots = useSelector((state) => state.spots.allSpots);
 
   useEffect(() => {
-    const query = async () => {
-      const response = await csrfFetch("/api/spots");
-      const data = await response.json();
+    dispatch(thunkGetAllSpots());
+  }, [dispatch]);
 
-      if (data && data.Spots) {
-        setSpots(data.Spots);
-      }
-    };
-
-    query();
-  }, []);
+  const spotsArray = Object.values(spots);
 
   return (
     <div className="spot-tiles">
-      {spots.map(({ id, price, city, state, avgRating, previewImage }) => {
+      {spotsArray.map(({ id, price, city, state, avgRating, previewImage }) => {
         return (
           <SpotTile
             key={id}
@@ -29,6 +25,7 @@ const SpotTiles = () => {
             location={`${city}, ${state}`}
             avgRating={avgRating}
             previewImage={previewImage}
+            id={id}
           />
         );
       })}

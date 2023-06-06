@@ -1,0 +1,28 @@
+.reserve-box{
+    border: 1px solid black;
+    border-radius: 20px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.fa-solid{
+    display:flex;
+    align-items: center;
+}
+
+.description-div{
+    display:flex;
+    justify-content: space-between;
+}
+
+.child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reserve-box-info{
+    display: flex;
+    justify-content: space-between;
+}
