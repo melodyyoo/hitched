@@ -4,6 +4,7 @@ import * as sessionActions from '../../store/session';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -37,43 +38,46 @@ function ProfileButton({ user }) {
     closeMenu();
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
+  const history=useHistory();
 
   return (
-    <>
+    <div>
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+    {  showMenu && <div ref={ulRef}>
         {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.firstName} {user.lastName}</li>
-            <li>{user.email}</li>
-            <li>
+          <div className="user-info" style={{position: 'absolute', right: 0}} >
+          <button onClick={e=>history.push('/spots/current')}style={{all:'unset', cursor:'pointer'}}>Manage Spots</button>
+            <p>{user.username}</p>
+            <p>{user.firstName} {user.lastName}</p>
+            <p>{user.email}</p>
+            <p>
               <button onClick={logout}>Log Out</button>
-            </li>
-          </>
+            </p>
+          </div>
         ) : (
-          <>
-            <li>
+          <div className="menu-buttons" style={{position:'absolute', right:0}}>
+            <p>
               <OpenModalButton
                 buttonText="Log In"
                 onButtonClick={closeMenu}
                 modalComponent={<LoginFormModal />}
               />
-            </li>
-            <li>
+            </p>
+            <p>
               <OpenModalButton
                 buttonText="Sign Up"
                 onButtonClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
-            </li>
-          </>
+            </p>
+          </div>
         )}
-      </ul>
-    </>
+      </div>}
+    </div>
   );
 }
 

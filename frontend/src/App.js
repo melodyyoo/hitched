@@ -5,6 +5,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { Route } from "react-router-dom";
 import SpotTiles from "./components/Spot/SpotTiles";
+import SpotDetails from './components/Spot/SpotDetails';
+import ManageSpots from "./components/Spot/ManageSpots";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +21,8 @@ function App() {
       {isLoaded &&
       <Switch>
         <Route exact path='/'component={SpotTiles}/>
+        <Route path='/spots/current' component={ManageSpots}/>
+        <Route path='/spots/:id' component={SpotDetails}/>
       </Switch>
       }
     </>
