@@ -5,6 +5,7 @@ import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import { useHistory } from "react-router-dom";
+import ManageSpots from "../Spot/ManageSpots";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function ProfileButton({ user }) {
   // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   const history=useHistory();
+
 
   return (
     <div>

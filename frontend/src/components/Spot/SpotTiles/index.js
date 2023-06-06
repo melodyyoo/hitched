@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import SpotTile from "../SpotTile";
-import { csrfFetch } from "../../../store/csrf";
 import "./SpotTiles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetAllSpots } from "../../../store/spots";
