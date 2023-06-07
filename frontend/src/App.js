@@ -7,6 +7,7 @@ import { Route } from "react-router-dom";
 import SpotTiles from "./components/Spot/SpotTiles";
 import SpotDetails from './components/Spot/SpotDetails';
 import ManageSpots from "./components/Spot/ManageSpots";
+import CreateSpot from "./components/CreateSpot";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
       <Switch>
         <Route exact path='/'component={SpotTiles}/>
         <Route path='/spots/current' component={ManageSpots}/>
+        <Route path='/spots/new' component={CreateSpot}/>
         <Route path='/spots/:id' component={SpotDetails}/>
       </Switch>
       }

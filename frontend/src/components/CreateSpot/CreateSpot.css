@@ -1,0 +1,44 @@
+.form-element{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: solid black;
+    padding-bottom: 25px;
+}
+
+.city-and-state{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.create-form-outer-container{
+    display: flex;
+    justify-content: center;
+}
+
+.create-form-inner-container{
+    width: 30%
+}
+
+form *{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+
+.form-photos-input{
+    margin-top: 15px;
+}
+
+textarea{
+    height:130px;
+    resize: none;
+}
+
+.errors{
+    color:red; 
+}
