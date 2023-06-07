@@ -131,13 +131,13 @@ router.post("/", requireAuth, async (req, res, next) => {
     error.errors.country = "Country is required";
   }
 
-  if (!lat || typeof lat !== "number") {
-    error.errors.lat = "Latitude is not valid";
-  }
+  // if (!lat || typeof lat !== "number") {
+  //   error.errors.lat = "Latitude is not valid";
+  // }
 
-  if (!lng || typeof lng !== "number") {
-    error.errors.lng = "Longitude is not valid";
-  }
+  // if (!lng || typeof lng !== "number") {
+  //   error.errors.lng = "Longitude is not valid";
+  // }
 
   if (!name || name.length > 50) {
     error.errors.name = "Name must be less than 50 characters";
@@ -153,7 +153,7 @@ router.post("/", requireAuth, async (req, res, next) => {
 
   if (Object.keys(error.errors).length) {
     res.status(400);
-    res.json(error);
+    return res.json(error);
   }
 
   const newSpot = await Spot.create({
@@ -162,8 +162,8 @@ router.post("/", requireAuth, async (req, res, next) => {
     city,
     state,
     country,
-    lat,
-    lng,
+    lat: 23.89143239,
+    lng: -23.80293823,
     name,
     description,
     price,
@@ -186,13 +186,15 @@ router.post("/:spotId/images", requireAuth, async (req, res, next) => {
       });
 
       const spotImage = await SpotImage.findOne({
-        where: {
-          url,
-        },
-        attributes: ["id", "url", "preview"],
-      });
+          where: {
+            url,
+          },
+          attributes: ["id", "url", "preview"],
+        });
+
 
       res.json(spotImage);
+
     } else {
       res.status(403);
       res.json({ message: "Forbidden" });
