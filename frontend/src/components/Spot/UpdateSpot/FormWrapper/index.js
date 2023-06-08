@@ -12,7 +12,7 @@ export default function FormWrapper() {
 
   useEffect(() => {
     dispatch(thunkGetSingleSpot(parseInt(id)));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
 
 

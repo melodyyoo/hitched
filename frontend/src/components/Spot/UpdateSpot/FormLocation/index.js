@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 export default function FormLocation({city, setCity, address, setAddress, country, setCountry, state, setState, errors}) {
 
