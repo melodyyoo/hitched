@@ -1,11 +1,14 @@
 import { csrfFetch } from "./csrf";
 
+//TYPES
 const GET_ALL_SPOTS = "spots/getAllSpots";
 const GET_SINGLE_SPOT = "spots/getSingleSpot";
-//make a type for creating a spot
 const CREATE_A_SPOT = "spots/createASpot";
 const DELETE_A_SPOT = "spots/deleteASpot";
+const UPDATE_A_SPOT = 'spots/updateASpot';
 
+/************************************************************************************ */
+//ACTION CREATORS
 export const actionGetAllSpots = (spots) => {
   return {
     type: GET_ALL_SPOTS,
@@ -35,7 +38,16 @@ export const actionDeleteASpot = (spotId) => {
   };
 };
 
+export const actionUpdateASpot = (updatedSpot)=>{
+    return{
+        type: UPDATE_A_SPOT,
+        updatedSpot
+    }
+}
 
+
+/***************************************************************************************** */
+//THUNKS
 export const thunkGetAllSpots = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots");
   const data = await response.json();
@@ -106,9 +118,29 @@ export const thunkDeleteASpot = (spotId) =>async(dispatch) =>{
 
     if(res.ok){
         dispatch(actionDeleteASpot(spotId))
+    }else{
+        const errors = await res.json();
+        return errors;
     }
 }
 
+export const thunkUpdateASpot = (spot, id) =>async(dispatch)=>{
+    const res = await csrfFetch(`/api/spots/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(spot)
+    });
+
+    if(res.ok){
+        const updatedSpot = await res.json();
+        dispatch(actionUpdateASpot(updatedSpot));
+        return updatedSpot;
+    }else{
+        const errors = await res.json();
+        return errors;
+    }
+}
+
+/*********************************************************************************************************** */
 const initialState = { allSpots: {}, singleSpot: {} };
 const spotsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -139,6 +171,12 @@ const spotsReducer = (state = initialState, action) => {
       const currentAllSpots = {...state.allSpots}
       delete currentAllSpots[action.spotId]
       return {...state, allSpots: currentAllSpots}
+
+    case UPDATE_A_SPOT:
+        const currentSingleSpot = {...state, singleSpot:{}};
+        currentSingleSpot.singleSpot = action.updatedSpot;
+
+        return currentSingleSpot;
     default:
       return state;
   }

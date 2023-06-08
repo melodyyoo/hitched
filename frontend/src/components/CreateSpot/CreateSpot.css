@@ -19,16 +19,27 @@
 }
 
 .create-form-inner-container{
-    width: 30%
+    width: 30%;
+
+}
+.create-form-inner-container * {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
-form *{
+/* form *{
     display: flex;
     justify-content: center;
     flex-direction: column;
 
-}
+} */
 
+.create-country .create-address{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
 .form-photos-input{
     margin-top: 15px;
@@ -40,5 +51,5 @@ textarea{
 }
 
 .errors{
-    color:red; 
+    color:red;
 }

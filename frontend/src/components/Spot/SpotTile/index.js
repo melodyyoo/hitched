@@ -8,7 +8,6 @@ const SpotTile = ({ previewImage, location, price, avgRating, id }) => {
         style={{
           width: 250,
           height: 200,
-          border: "solid black 1px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -17,10 +16,11 @@ const SpotTile = ({ previewImage, location, price, avgRating, id }) => {
         {previewImage}
       </div>
     ) : (
-      <img src={previewImage} alt="Spot Image" />
+      <img src={previewImage} alt="Spot" />
     );
 
   const history = useHistory();
+
 
   return (
     <>
@@ -28,9 +28,9 @@ const SpotTile = ({ previewImage, location, price, avgRating, id }) => {
         {image}
         <div className="location-and-rating">
           <p>{location}</p>
-          <div style={{display:'flex'}}>
-            <i className="fa-solid fa-star" style={{fontWeight: 150, fontSize: 12}}></i>
-            <p>{avgRating}</p>
+          <div className="star-and-rating" style={{display:'flex'}}>
+            <i className="fa-solid fa-star landing-page-star" style={{fontWeight: 150, fontSize: 12}}></i>
+            <span>{avgRating ? <p>{parseFloat(avgRating).toFixed(1)}</p> : <p>New</p>}</span>
           </div>
         </div>
         <p>${price} per day</p>

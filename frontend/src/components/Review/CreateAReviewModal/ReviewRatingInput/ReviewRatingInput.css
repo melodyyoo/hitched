@@ -1,0 +1,29 @@
+.rating-input .filled {
+    color: rgb(201, 177, 244);
+  }
+
+  .rating-input .empty {
+    color: rgb(225, 217, 239);
+  }
+
+.rating-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5px 0;
+    align-items: center;
+  }
+
+
+.each-star{
+    width:fit-content;
+}
+
+.post-review-form{
+    display:flex;
+    flex-direction: column;
+    margin: 0 20px 20px 20px;
+    justify-content: center;
+}
+
+

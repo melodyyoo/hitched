@@ -1,6 +1,5 @@
 export default function FormDescription({ description, setDescription, errors }) {
 
-
   return (
     <div className="form-element" style={{ width: "100%" }}>
       <h2>Describe your place to guests</h2>

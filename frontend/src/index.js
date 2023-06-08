@@ -2,7 +2,7 @@ import React from "react";
 
 import "./index.css";
 
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { ModalProvider, Modal } from "./context/Modal";
@@ -27,20 +27,26 @@ if (process.env.NODE_ENV !== "production") {
 // HTML elements on top of the all the other HTML elements:
 function Root() {
   return (
-    <ModalProvider>
-      <Provider store={store}>
-        <BrowserRouter>
+    <BrowserRouter>
+      <ModalProvider>
+        <Provider store={store}>
           <App />
           <Modal />
-        </BrowserRouter>
-      </Provider>
-    </ModalProvider>
+        </Provider>
+      </ModalProvider>
+    </BrowserRouter>
   );
 }
 
-ReactDOM.render(
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Root />
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Root />
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
