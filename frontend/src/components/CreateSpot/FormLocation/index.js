@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import '../CreateSpot.css';
 
 export default function FormLocation({city, setCity, address, setAddress, country, setCountry, state, setState, errors}) {
 
@@ -7,7 +8,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
       <h1>Create a new Spot</h1>
       <h2>Where's your place located?</h2>
       <p>Guests will only get your exact address once they booked a reservation.</p>
-      <label>
+      <label className="create-country">
         Country
         <input
           type="text"
@@ -20,7 +21,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
         ></input>
       </label>
       <div className="errors">{errors.country}</div>
-      <label>
+      <label className="create-address">
         Street Address
         <input
           type="text"
@@ -35,7 +36,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
         <label>
           City
           <input
-            style={{ width: "175%" }}
+            // style={{ width: "175%" }}
             type="text"
             value={city}
             onChange={(e) => {
@@ -49,7 +50,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
         <label>
           State
           <input
-            style={{ width: "94.6%" }}
+            // style={{ width: "94.6%" }}
             type="text"
             value={state}
             onChange={(e) => {

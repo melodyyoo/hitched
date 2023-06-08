@@ -98,8 +98,9 @@ router.get("/:spotId", async (req, res, next) => {
       starTotal += review.dataValues.stars;
     });
     const avg = starTotal / reviews.length;
+    const finalAvg = parseFloat(avg).toFixed(1);
 
-    spot.dataValues.avgStarRating = avg;
+    spot.dataValues.avgStarRating = finalAvg;
 
     res.json(spot);
   } else {
@@ -423,7 +424,7 @@ router.put("/:spotId", requireAuth, async (req, res, next) => {
 
   if (spot) {
     if (spot.dataValues.ownerId === req.user.id) {
-      const { address, city, state, country, lat, lng, name, description, price } = req.body;
+      const { address, city, state, country, name, description, price } = req.body;
       const error = { message: "Bad Request", errors: {} };
       if (!address) {
         error.errors.address = "Street address is required";
@@ -441,14 +442,6 @@ router.put("/:spotId", requireAuth, async (req, res, next) => {
         error.errors.country = "Country is required";
       }
 
-      if (!lat || typeof lat !== "number") {
-        error.errors.lat = "Latitude is not valid";
-      }
-
-      if (!lng || typeof lng !== "number") {
-        error.errors.lng = "Longitude is not valid";
-      }
-
       if (!name || name.length > 50) {
         error.errors.name = "Name must be less than 50 characters";
       }
@@ -463,7 +456,7 @@ router.put("/:spotId", requireAuth, async (req, res, next) => {
 
       if (Object.keys(error.errors).length) {
         res.status(400);
-        res.json(error);
+        return res.json(error);
       }
 
       spot.set({
@@ -471,18 +464,16 @@ router.put("/:spotId", requireAuth, async (req, res, next) => {
         city,
         state,
         country,
-        lat,
-        lng,
         name,
         description,
         price,
         ownerId: req.user.id,
       });
       await spot.save();
-      res.json(spot);
+      return res.json(spot);
     } else {
       res.status(403);
-      res.json({ message: "Forbidden" });
+      return res.json({ message: "Forbidden" });
     }
   } else {
     res.status(404).json({

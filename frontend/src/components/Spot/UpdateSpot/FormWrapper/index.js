@@ -12,7 +12,6 @@ export default function FormWrapper() {
 
   useEffect(() => {
     dispatch(thunkGetSingleSpot(parseInt(id)));
-    //   setDescription(newSpot.description)
   }, [dispatch]);
 
 

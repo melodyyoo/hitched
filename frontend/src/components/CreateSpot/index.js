@@ -69,7 +69,7 @@ export default function CreateSpot() {
     //if errors, setErrors(error repsonse)
     const tempErrorsArray = Object.values(tempErrors)
     if(tempErrorsArray.length > 0){
-  
+
       setErrors(tempErrors)
     }else{
       dispatch(thunkCreateASpot(newSpot, imagesArray))

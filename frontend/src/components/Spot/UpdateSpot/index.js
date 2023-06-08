@@ -40,7 +40,7 @@ export default function UpdateSpot({newSpot, id}) {
 
     const tempErrorsArray = Object.values(tempErrors)
     if(tempErrorsArray.length > 0){
-  
+
       setErrors(tempErrors)
     }else{
       dispatch(thunkUpdateASpot(newSpot,id))

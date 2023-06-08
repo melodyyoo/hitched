@@ -27,11 +27,11 @@ export default function SpotDetails() {
       </h4>
       <div className="images-div">
         {SpotImages &&
-          SpotImages.map((image) => {
+          SpotImages.map((image, i) => {
             if (image.preview === true) {
-              return <img key={image.url} src={image.url} alt="No preview image available" />;
+              return <img style={{width: 300}} key={image.id} src={image.url} alt="Spot" />;
             } else {
-              return <p>No preview image available</p>;
+              return <p key={i}>No preview image available</p>;
             }
           })}
       </div>

@@ -126,8 +126,7 @@ export const thunkDeleteASpot = (spotId) =>async(dispatch) =>{
 
 export const thunkUpdateASpot = (spot, id) =>async(dispatch)=>{
     const res = await csrfFetch(`/api/spots/${id}`, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
+        method: "PUT",
         body: JSON.stringify(spot)
     });
 

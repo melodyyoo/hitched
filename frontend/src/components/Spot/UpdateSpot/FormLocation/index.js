@@ -34,7 +34,6 @@ export default function FormLocation({city, setCity, address, setAddress, countr
         <label>
           City
           <input
-            style={{ width: "175%" }}
             type="text"
             value={city}
             onChange={(e) => {
@@ -47,7 +46,6 @@ export default function FormLocation({city, setCity, address, setAddress, countr
         <label>
           State
           <input
-            style={{ width: "94.6%" }}
             type="text"
             value={state}
             onChange={(e) => {

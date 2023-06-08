@@ -19,7 +19,7 @@ export function AverageStarRatingSmall({avgStarRating, numReviews}){
     return(
         <div style={{ display: "flex" }}>
         <i className="fa-solid fa-star child"></i>
-        <p className="child">{avgStarRating}</p>
+        <p className="child">{isNaN(avgStarRating) ? null: avgStarRating}</p>
         <ReviewNumberCheck/>
       </div>
     )
@@ -43,7 +43,7 @@ export function AverageStarRatingBig({avgStarRating, numReviews}){
     return(
         <div style={{ display: "flex" }}>
         <i className="fa-solid fa-star"></i>
-        <h2>{avgStarRating}</h2>
+        <h2>{isNaN(avgStarRating) ? null: avgStarRating}</h2>
         <ReviewNumberCheck />
       </div>
     )

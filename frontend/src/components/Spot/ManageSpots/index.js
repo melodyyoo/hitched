@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import { thunkGetAllSpots } from "../../../store/spots";
+import { thunkGetAllSpots, thunkGetSingleSpot } from "../../../store/spots";
 import { useDispatch, useSelector } from "react-redux";
 import SpotTile from "../SpotTile";
 import { useHistory } from "react-router-dom";
-import DeleteSpot from "../../DeleteSpot/DeleteSpotButton";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteSpotModal from "../../DeleteSpot/DeleteSpotModal";
 
@@ -20,7 +19,7 @@ export default function ManageSpots() {
   const spotsArray = Object.values(spots);
 
   const usersSpotsArray = spotsArray.filter((spot) => {
-    if (user) return spot.ownerId === user.id;
+      return user ? spot.ownerId === user.id : false;
   });
 
   return (
@@ -42,7 +41,7 @@ export default function ManageSpots() {
                 id={id}
               />
               <div className="update-delete-buttons">
-                <button onClick={e=>history.push(`/spots/${id}/edit`)}>Update</button>
+                <button onClick={e=>{dispatch(thunkGetSingleSpot(id)).then(()=>history.push(`/spots/${id}/edit`))}}>Update</button>
                 <p>
                   <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal id={id}/>} />
                 </p>

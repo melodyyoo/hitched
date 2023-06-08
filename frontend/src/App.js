@@ -8,8 +8,8 @@ import SpotTiles from "./components/Spot/SpotTiles";
 import SpotDetails from './components/Spot/SpotDetails';
 import ManageSpots from "./components/Spot/ManageSpots";
 import CreateSpot from "./components/CreateSpot";
-import UpdateSpot from "./components/Spot/UpdateSpot/index";
 import FormWrapper from "./components/Spot/UpdateSpot/FormWrapper";
+import ManageReviews from "./components/Review/ManageReviews";
 
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
         <Route exact path='/spots/new' component={CreateSpot}/>
         <Route exact path='/spots/:id' component={SpotDetails}/>
         <Route exact path='/spots/:id/edit' component={FormWrapper}/>
+        <Route exact path='/reviews/current' component={ManageReviews}/>
       </Switch>
       }
     </>
