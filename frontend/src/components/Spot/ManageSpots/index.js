@@ -42,7 +42,7 @@ export default function ManageSpots() {
                 id={id}
               />
               <div className="update-delete-buttons">
-                <button>Update</button>
+                <button onClick={e=>history.push(`/spots/${id}/edit`)}>Update</button>
                 <p>
                   <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal id={id}/>} />
                 </p>

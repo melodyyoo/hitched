@@ -11,6 +11,7 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const history=useHistory();
 
   const openMenu = () => {
     if (showMenu) return;
@@ -37,12 +38,10 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     closeMenu();
+    history.push('/');
   };
 
   // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-
-  const history=useHistory();
-
 
   return (
     <div>
@@ -52,10 +51,11 @@ function ProfileButton({ user }) {
     {  showMenu && <div ref={ulRef}>
         {user ? (
           <div className="user-info" style={{position: 'absolute', right: 0}} >
-          <button onClick={e=>history.push('/spots/current')}style={{all:'unset', cursor:'pointer'}}>Manage Spots</button>
             <p>{user.username}</p>
             <p>{user.firstName} {user.lastName}</p>
             <p>{user.email}</p>
+          <button onClick={e=>history.push('/spots/current')}style={{all:'unset', cursor:'pointer'}}>Manage Spots</button>
+          <button onClick={e=>history.push('/reviews/current')}style={{all:'unset', cursor:'pointer'}}>Manage Reviews</button>
             <p>
               <button onClick={logout}>Log Out</button>
             </p>

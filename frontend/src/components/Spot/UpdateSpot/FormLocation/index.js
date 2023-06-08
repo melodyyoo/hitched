@@ -4,7 +4,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
 
     return (
     <div className="form-location form-element">
-      <h1>Create a new Spot</h1>
+      <h1>Update a new Spot</h1>
       <h2>Where's your place located?</h2>
       <p>Guests will only get your exact address once they booked a reservation.</p>
       <label>
@@ -30,7 +30,6 @@ export default function FormLocation({city, setCity, address, setAddress, countr
           required
         ></input>
       </label>
-      <div className="errors">{errors.address}</div>
       <div className="city-and-state">
         <label>
           City
@@ -45,7 +44,6 @@ export default function FormLocation({city, setCity, address, setAddress, countr
             required
           ></input>
         </label>
-        <div className="errors">{errors.city}</div>
         <label>
           State
           <input
@@ -59,7 +57,6 @@ export default function FormLocation({city, setCity, address, setAddress, countr
             required
           ></input>
         </label>
-        <div className="errors">{errors.state}</div>
       </div>
     </div>
   );

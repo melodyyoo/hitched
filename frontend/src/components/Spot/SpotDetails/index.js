@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetSingleSpot } from "../../../store/spots";
 import "./SpotDetails.css";
+import ReviewList from "../../Review/ReviewList";
+import  { AverageStarRatingSmall } from "../AverageStarRating";
 
 export default function SpotDetails() {
   const { id } = useParams();
@@ -11,7 +13,7 @@ export default function SpotDetails() {
 
   useEffect(() => {
     dispatch(thunkGetSingleSpot(id));
-  }, [dispatch]);
+  }, [dispatch,id]);
 
   if (!spot) return null;
 
@@ -46,19 +48,7 @@ export default function SpotDetails() {
           <div className='reserve-box-info'>
 
             <h2 className="child" style={{width:'fit-content'}}>${price} per day</h2>
-            <div style={{ display: "flex" }}>
-              <i className="fa-solid fa-star child"></i>
-              <p className="child">{avgStarRating}</p>
-              {numReviews === 1 ? (
-                <p className="child" style={{ marginLeft: 10 }}>
-                  {numReviews} review
-                </p>
-              ) : (
-                <p className="child" style={{ marginLeft: 10 }}>
-                  {numReviews} reviews
-                </p>
-              )}
-            </div>
+            <AverageStarRatingSmall avgStarRating={avgStarRating} numReviews={numReviews}/>
           </div>
             <button
               onClick={(e) => window.alert("Feature coming soon...")}
@@ -68,15 +58,7 @@ export default function SpotDetails() {
             </button>
         </div>
       </div>
-      <div style={{ display: "flex" }}>
-        <i className="fa-solid fa-star"></i>
-        <h2>{avgStarRating}</h2>
-        {numReviews === 1 ? (
-          <h2 style={{ marginLeft: 30 }}>{numReviews} review</h2>
-        ) : (
-          <h2>{numReviews} reviews</h2>
-        )}
-      </div>
+      <ReviewList id={id} Owner={Owner} avgStarRating={avgStarRating} numReviews={numReviews}/>
     </>
   );
 }
