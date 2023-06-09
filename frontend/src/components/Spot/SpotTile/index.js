@@ -42,3 +42,5 @@ const SpotTile = ({ previewImage, location, price, avgRating, id , name}) => {
 };
 
 export default SpotTile;
+
+
