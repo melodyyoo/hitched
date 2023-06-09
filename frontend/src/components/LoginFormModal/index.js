@@ -43,7 +43,7 @@ function LoginFormModal() {
   }
 
   return (
-    <>
+    <div className="login-modal">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
           {errors.credential && (
@@ -67,10 +67,10 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button disabled={Object.keys(validationObject).length} type="submit">Log In</button>
-        <button onClick={demoUserLogin}>Demo User</button>
+        <button className="log-in-button" disabled={Object.keys(validationObject).length} type="submit">Log In</button>
+        <button className="demo-user-button" onClick={demoUserLogin}>Demo User</button>
       </form>
-    </>
+    </div>
   );
 }
 
