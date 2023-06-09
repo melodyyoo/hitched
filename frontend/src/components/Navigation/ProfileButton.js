@@ -46,40 +46,41 @@ function ProfileButton({ user }) {
   return (
     <div ref={ulRef} style={{ display: "flex", justifyContent: "flex-end" }}>
         <button
-          style={{ all: "unset", cursor: "pointer", display: "flex", alignItems: "center" }}
+          className='profile-button'
           onClick={openMenu}
         >
-          <i className="fa-solid fa-bars fa-xl"></i>
+          <i className="fa-solid fa-bars fa-xl menu-icon"></i>
           <i className="fas fa-user-circle fa-xl" />
         </button>
       {showMenu && (
         <div>
           {user ? (
-            <div className="user-info" style={{ position: "absolute", right: 0 }}>
-              <p>
+            <div className="user-info" style={{ position: "absolute", right: 0}}>
+              <p style={{fontWeight: 'bold', textAlign:'center'}}>
                 Hello, {user.firstName}
               </p>
-              <p>{user.email}</p>
+              <p className="email">{user.email}</p>
               <button
+                className="manage-spots"
                 onClick={(e) => history.push("/spots/current")}
-                style={{ all: "unset", cursor: "pointer" }}
               >
                 Manage Spots
               </button>
               <button
+                className="manage-reviews"
                 onClick={(e) => history.push("/reviews/current")}
-                style={{ all: "unset", cursor: "pointer" }}
               >
                 Manage Reviews
               </button>
-              <p>
-                <button onClick={logout}>Log Out</button>
+              <p style={{textAlign:'center'}}>
+                <button className="log-out-button" onClick={logout}>Log Out</button>
               </p>
             </div>
           ) : (
             <div className="menu-buttons user-info logged-out-modal" style={{ position: "absolute", right: 0 }}>
               <p className='logged-out-button'>
                 <OpenModalButton
+                  className="open-modal-button"
                   buttonText="Log In"
                   onButtonClick={closeMenu}
                   modalComponent={<LoginFormModal />}
@@ -87,6 +88,7 @@ function ProfileButton({ user }) {
               </p>
               <p className='logged-out-button'>
                 <OpenModalButton
+                  className="open-modal-button"
                   buttonText="Sign Up"
                   onButtonClick={closeMenu}
                   modalComponent={<SignupFormModal />}

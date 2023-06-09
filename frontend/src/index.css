@@ -3,3 +3,7 @@ html * {
     font-family: 'Outfit', sans-serif;
 }
 
+
+:root{
+    --app-color:  rgb(138, 194, 127)
+}
