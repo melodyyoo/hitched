@@ -54,9 +54,8 @@ function ProfileButton({ user }) {
         <div>
           {user ? (
             <div className="user-info" style={{ position: "absolute", right: 0 }}>
-              <p>{user.username}</p>
               <p>
-                {user.firstName} {user.lastName}
+                Hello, {user.firstName}
               </p>
               <p>{user.email}</p>
               <button

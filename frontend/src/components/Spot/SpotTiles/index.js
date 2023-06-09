@@ -8,16 +8,16 @@ const SpotTiles = () => {
   const dispatch = useDispatch();
   const spots = useSelector((state) => state.spots.allSpots);
 
-  console.log('SPOTS: ', spots)
   useEffect(() => {
     dispatch(thunkGetAllSpots());
   }, [dispatch]);
 
   const spotsArray = Object.values(spots);
 
+  console.log('spotsArray: ', spotsArray)
   return (
     <div className="spot-tiles">
-      {spotsArray.map(({ id, price, city, state, avgRating, previewImage }) => {
+      {spotsArray.map(({ id, price, city, state, avgRating, previewImage,name }) => {
         return (
           <SpotTile
             key={id}
@@ -26,6 +26,7 @@ const SpotTiles = () => {
             avgRating={avgRating}
             previewImage={previewImage}
             id={id}
+            name={name}
           />
         );
       })}

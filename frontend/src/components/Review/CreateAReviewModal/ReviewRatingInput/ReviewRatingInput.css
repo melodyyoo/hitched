@@ -1,9 +1,9 @@
 .rating-input .filled {
-    color: rgb(201, 177, 244);
+    color:  rgb(138, 194, 127);
   }
 
   .rating-input .empty {
-    color: rgb(225, 217, 239);
+    color:  rgb(198, 210, 196);
   }
 
 .rating-input {
@@ -25,5 +25,3 @@
     margin: 0 20px 20px 20px;
     justify-content: center;
 }
-
-
