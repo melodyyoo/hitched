@@ -39,6 +39,8 @@ function ProfileButton({ user }) {
     history.push("/");
   };
 
+
+
   // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
@@ -75,15 +77,15 @@ function ProfileButton({ user }) {
               </p>
             </div>
           ) : (
-            <div className="menu-buttons" style={{ position: "absolute", right: 0 }}>
-              <p>
+            <div className="menu-buttons user-info logged-out-modal" style={{ position: "absolute", right: 0 }}>
+              <p className='logged-out-button'>
                 <OpenModalButton
                   buttonText="Log In"
                   onButtonClick={closeMenu}
                   modalComponent={<LoginFormModal />}
                 />
               </p>
-              <p>
+              <p className='logged-out-button'>
                 <OpenModalButton
                   buttonText="Sign Up"
                   onButtonClick={closeMenu}
