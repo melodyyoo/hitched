@@ -28,14 +28,16 @@ router.get("/", async (req, res) => {
     spot.dataValues.avgRating = avg;
 
     const images = await spot.getSpotImages();
-    images.forEach((image) => {
-      if (image.dataValues.preview === true) {
-        spot.dataValues.previewImage = image.dataValues.url;
-      } else {
-        spot.dataValues.previewImage = "No preview image available";
-      }
-    });
 
+    const image = images[0];
+    const jsonImage = image.toJSON();
+
+    if (jsonImage.preview === true) {
+      spot.dataValues.previewImage = jsonImage.url;
+    } else{
+      spot.dataValues.previewImage = "No preview image available";
+    }
+    
     updatedSpots.push(spot.toJSON());
   }
 
@@ -187,15 +189,13 @@ router.post("/:spotId/images", requireAuth, async (req, res, next) => {
       });
 
       const spotImage = await SpotImage.findOne({
-          where: {
-            url,
-          },
-          attributes: ["id", "url", "preview"],
-        });
-
+        where: {
+          url,
+        },
+        attributes: ["id", "url", "preview"],
+      });
 
       res.json(spotImage);
-
     } else {
       res.status(403);
       res.json({ message: "Forbidden" });

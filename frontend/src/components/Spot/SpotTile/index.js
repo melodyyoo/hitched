@@ -2,6 +2,8 @@ import "./SpotTile.css";
 import { useHistory } from "react-router-dom";
 
 const SpotTile = ({ previewImage, location, price, avgRating, id }) => {
+
+  console.log('previewImage: ', previewImage)
   const image =
     previewImage === "No preview image available" ? (
       <div

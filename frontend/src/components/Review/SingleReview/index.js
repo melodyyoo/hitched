@@ -12,7 +12,7 @@ export default function SingleReview({User, createdAt, review, reviewId}){
         <h4>{User.firstName}</h4>
         <h5>{date}</h5>
         <p>{review}</p>
-        {User.id === user.id ? <DeleteReviewButton reviewId={reviewId}/> : null}
+        {user && (User.id === user.id )? <DeleteReviewButton reviewId={reviewId}/> : null}
         </div>
     )
 }
