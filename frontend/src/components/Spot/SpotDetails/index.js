@@ -29,9 +29,9 @@ export default function SpotDetails() {
         {SpotImages &&
           SpotImages.map((image, i) => {
             if (image.preview === true) {
-              return <img style={{width: 300}} key={image.id} src={image.url} alt="Spot" />;
+              return <img style={{width: 300}} key={i} src={image.url} alt="Spot" />;
             } else {
-              return <p key={i}>No preview image available</p>;
+              return <img key={i} style={{width: 300}} src={image.url} alt="Spot" />;
             }
           })}
       </div>

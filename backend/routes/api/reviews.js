@@ -30,13 +30,13 @@ router.get('/current', requireAuth, async (req,res,next)=>{
                 id: newReview.spotId
             }
         });
+     
         const spotImages = await spot.getSpotImages();
 
         for(let i =0; i< spotImages.length; i++){
             const spotImage = spotImages[i];
 
             const newSpotImage = spotImage.toJSON();
-
 
             if(newSpotImage.preview === true){
                 newReview.Spot.previewImage = newSpotImage.url
