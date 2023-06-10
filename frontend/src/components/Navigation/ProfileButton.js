@@ -49,8 +49,8 @@ function ProfileButton({ user }) {
           className='profile-button'
           onClick={openMenu}
         >
-          <i className="fa-solid fa-bars fa-xl menu-icon"></i>
-          <i className="fas fa-user-circle fa-xl" />
+          <i style={{color: 'rgb(109, 152, 100)'}} className="fa-solid fa-bars fa-xl menu-icon"></i>
+          <i style={{color: 'rgb(109, 152, 100)'}} className="fas fa-user-circle fa-xl" />
         </button>
       {showMenu && (
         <div>
@@ -73,7 +73,7 @@ function ProfileButton({ user }) {
                 Manage Reviews
               </button>
               <p style={{textAlign:'center'}}>
-                <button className="log-out-button" onClick={logout}>Log Out</button>
+                <button style={{cursor: 'pointer'}} className="log-out-button" onClick={logout}>Log Out</button>
               </p>
             </div>
           ) : (

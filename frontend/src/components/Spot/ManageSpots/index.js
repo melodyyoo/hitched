@@ -26,10 +26,10 @@ export default function ManageSpots() {
     <>
       <div>
         <h1>Manage Your Spots</h1>
-        <button onClick={(e) => history.push("/spots/new")}>Create a New Spot</button>
+        <button style={{marginLeft: 34, boxShadow: '4px 4px 5px rgb(151, 150, 150)', cursor:'pointer'}} onClick={(e) => history.push("/spots/new")}>Create a New Spot</button>
       </div>
       <div className="spot-tiles">
-        {usersSpotsArray.map(({ id, price, city, state, avgRating, previewImage }) => {
+        {usersSpotsArray.map(({ id, price, city, state, avgRating, previewImage , name}) => {
           return (
             <div key={id} className="manage-tile" style={{ display: "flex", flexDirection: "column" }}>
               <SpotTile
@@ -39,9 +39,10 @@ export default function ManageSpots() {
                 avgRating={avgRating}
                 previewImage={previewImage}
                 id={id}
+                name={name}
               />
               <div className="update-delete-buttons">
-                <button onClick={e=>{dispatch(thunkGetSingleSpot(id)).then(()=>history.push(`/spots/${id}/edit`))}}>Update</button>
+                <button style={{ boxShadow: '4px 4px 5px rgb(151, 150, 150)', cursor:'pointer'}} onClick={e=>{dispatch(thunkGetSingleSpot(id)).then(()=>history.push(`/spots/${id}/edit`))}}>Update</button>
                 <p>
                   <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal id={id}/>} />
                 </p>

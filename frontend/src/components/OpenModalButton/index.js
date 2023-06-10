@@ -15,7 +15,7 @@ function OpenModalButton({
     setModalContent(modalComponent);
   };
 
-  return <button style={{all:'unset', cursor: 'pointer', fontSize:13}} onClick={onClick}>{buttonText}</button>;
+  return <button style={{boxShadow: "4px 4px 5px rgb(151, 150, 150)", cursor:'pointer'}} onClick={onClick}>{buttonText}</button>;
 }
 
 export default OpenModalButton;

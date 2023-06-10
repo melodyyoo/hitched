@@ -110,7 +110,7 @@ export default function CreateSpot() {
             setUrl3={setUrl3} url4={url4} setUrl4={setUrl4}
         />
         <div className="submit-button" style={{ display: "flex", alignItems: "center" }}>
-          <button type="submit" style={{ width: "25%", marginTop: "5%" }}>
+          <button type="submit" style={{ width: "100%", marginTop: "5%", all:'unset'}}>
             Create Spot
           </button>
         </div>
