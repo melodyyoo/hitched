@@ -46,6 +46,7 @@ function ProfileButton({ user }) {
   return (
     <div ref={ulRef} style={{ display: "flex", justifyContent: "flex-end" }}>
         <button
+          style={{marginBottom: 13}}
           className='profile-button'
           onClick={openMenu}
         >
@@ -56,7 +57,7 @@ function ProfileButton({ user }) {
         <div>
           {user ? (
             <div className="user-info" style={{ position: "absolute", right: 0}}>
-              <p style={{fontWeight: 'bold', textAlign:'center'}}>
+              <p style={{ textAlign:'center'}}>
                 Hello, {user.firstName}
               </p>
               <p className="email">{user.email}</p>
@@ -78,15 +79,14 @@ function ProfileButton({ user }) {
             </div>
           ) : (
             <div className="menu-buttons user-info logged-out-modal" style={{ position: "absolute", right: 0 }}>
-              <p className='logged-out-button'>
+              <p className='logged-out-button login'>
                 <OpenModalButton
-                  className="open-modal-button"
                   buttonText="Log In"
                   onButtonClick={closeMenu}
                   modalComponent={<LoginFormModal />}
                 />
               </p>
-              <p className='logged-out-button'>
+              <p className='logged-out-button signup'>
                 <OpenModalButton
                   className="open-modal-button"
                   buttonText="Sign Up"

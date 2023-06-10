@@ -1,9 +1,14 @@
 /* TODO Add site wide styles */
 html * {
     font-family: 'Outfit', sans-serif;
+    font-weight: 100;
 }
 
 
 :root{
     --app-color:  rgb(138, 194, 127);
+    background-color: rgb(252, 253, 252);
 }
+
+/*
+rgb(109, 152, 100); */
