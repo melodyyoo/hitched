@@ -1,0 +1,14 @@
+.review-date{
+    position: relative;
+    top: -12px;
+    color: rgb(151, 149, 149)
+}
+
+.review{
+    position: relative;
+    top: -10px;
+}
+
+.review-firstname{
+    font-weight: bold;
+}
