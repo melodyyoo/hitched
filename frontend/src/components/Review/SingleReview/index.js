@@ -13,6 +13,7 @@ export default function SingleReview({User, createdAt, review, reviewId}){
     const year = dateArray[0];
     let month = ''
 
+    if(dateArray[1]==='01')month = 'January'
     if(dateArray[1]==='02')month = "February"
     if(dateArray[1]==='03')month = "March"
     if(dateArray[1]==='04')month = "April"

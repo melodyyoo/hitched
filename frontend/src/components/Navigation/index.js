@@ -8,9 +8,10 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
 
   return (
-    <div className="nav-bar" style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
-      <NavLink exact to="/">
-        Home
+    <div className="nav-bar" style={{ display: "flex", width: "100%", justifyContent: "space-between", borderBottom: 'solid rgb(175, 175, 175)'}}>
+      <NavLink className="logo-link" exact to="/">
+      <i class="fa-solid fa-ring" style={{color:" #6d9864", width:'fit-content'}}></i>
+        hitched
       </NavLink>
 
       <div style={{display:'flex'}}>

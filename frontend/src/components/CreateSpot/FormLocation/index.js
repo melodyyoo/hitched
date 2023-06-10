@@ -5,12 +5,13 @@ export default function FormLocation({city, setCity, address, setAddress, countr
 
     return (
     <div className="form-location form-element">
-      <h1>Create a new Spot</h1>
+      <h1 style={{textAlign: 'left'}}>Create a new Spot</h1>
       <h2>Where's your place located?</h2>
       <p>Guests will only get your exact address once they booked a reservation.</p>
       <label className="create-country">
         Country
         <input
+          style={{}}
           type="text"
           value={country}
           onChange={(e) => {
