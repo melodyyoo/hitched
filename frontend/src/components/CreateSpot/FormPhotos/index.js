@@ -6,7 +6,7 @@ export default function FormPhotos({previewUrl, setPreviewUrl, url1, setUrl1, ur
       <h2>Liven up your spot with photos</h2>
       <p>Submit a link to at least one photo to publish your spot.</p>
       <div>
-        <input required onChange={e=> setPreviewUrl(e.target.value)} value={previewUrl} placeholder="Preview Image URL"></input>
+        <input   style={{width: '95%'}} required onChange={e=> setPreviewUrl(e.target.value)} value={previewUrl} placeholder="Preview Image URL"></input>
         <div className="errors">{errors.previewUrl}</div>
         <input className="form-photos-input"  onChange={e=> setUrl1(e.target.value)} value={url1} placeholder="Image URL"></input>
         <div className="errors">{errors.url1}</div>

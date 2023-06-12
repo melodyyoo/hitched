@@ -35,12 +35,10 @@ const SpotTile = ({ previewImage, location, price, avgRating, id , name}) => {
             <span>{avgRating ? <p>{parseFloat(avgRating).toFixed(1)}</p> : <p>New</p>}</span>
           </div>
         </div>
-        <p>${price} per day</p>
+        <p>${price} day</p>
       </div>
     </>
   );
 };
 
 export default SpotTile;
-
-
