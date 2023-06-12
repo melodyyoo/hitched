@@ -26,7 +26,7 @@ module.exports = {
         onDelete: 'cascade'
       },
       review: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(800),
         allowNull:false
       },
       stars: {
