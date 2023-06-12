@@ -11,7 +11,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
       <label className="create-country">
         Country
         <input
-          style={{}}
+          style={{width: '95%'}}
           type="text"
           value={country}
           onChange={(e) => {
@@ -25,6 +25,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
       <label className="create-address">
         Street Address
         <input
+        style={{width: '95%'}}
           type="text"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
@@ -37,7 +38,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
         <label>
           City
           <input
-            // style={{ width: "175%" }}
+           className='city-input'
             type="text"
             value={city}
             onChange={(e) => {
@@ -51,7 +52,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
         <label>
           State
           <input
-            // style={{ width: "94.6%" }}
+          className='state-input'
             type="text"
             value={state}
             onChange={(e) => {

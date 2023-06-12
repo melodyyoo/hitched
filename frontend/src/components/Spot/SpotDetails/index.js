@@ -30,8 +30,10 @@ export default function SpotDetails() {
   const classNames = ["one", "two", "three", "four"];
 
   if (!SpotImages) return null;
+
+
   const previewImage =
-    SpotImages != null ? <img className="preview-image" src={SpotImages[0].url} alt="Spot" /> : null;
+    SpotImages[0] != null ? <img className="preview-image" src={SpotImages[0].url} alt="Spot" /> : null;
   return (
     <>
       <div className="spot-details-div">
@@ -61,7 +63,7 @@ export default function SpotDetails() {
             <div className="reserve-box">
               <div className="reserve-box-info">
                 <h2 className="child" style={{ width: "fit-content" }}>
-                  ${price} per day
+                  ${price} day
                 </h2>
                 <AverageStarRatingSmall avgStarRating={avgStarRating} numReviews={numReviews} />
               </div>

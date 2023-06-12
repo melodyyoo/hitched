@@ -95,7 +95,7 @@ export default function UpdateSpot({newSpot, id}) {
           </label>
         </div>
         <div className="submit-button" style={{ display: "flex", alignItems: "center" }}>
-          <button type="submit" style={{ width: "25%", marginTop: "5%" }}>
+          <button type="submit" style={{ width: "25%", marginTop: "5%", all:'unset' }}>
             Update Spot
           </button>
         </div>
