@@ -14,7 +14,6 @@ const SpotTiles = () => {
 
   const spotsArray = Object.values(spots);
 
-  console.log('spotsArray: ', spotsArray)
   return (
     <div className="spot-tiles">
       {spotsArray.map(({ id, price, city, state, avgRating, previewImage,name }) => {
