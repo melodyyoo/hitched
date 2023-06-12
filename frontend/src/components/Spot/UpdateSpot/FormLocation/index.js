@@ -1,14 +1,23 @@
-
-export default function FormLocation({city, setCity, address, setAddress, country, setCountry, state, setState, errors}) {
-
-    return (
+export default function FormLocation({
+  city,
+  setCity,
+  address,
+  setAddress,
+  country,
+  setCountry,
+  state,
+  setState,
+  errors,
+}) {
+  return (
     <div className="form-location form-element">
-      <h1>Update a new Spot</h1>
+      <h1 style={{textAlign: 'left'}}>Update a New Spot</h1>
       <h2>Where's your place located?</h2>
       <p>Guests will only get your exact address once they booked a reservation.</p>
       <label>
         Country
         <input
+          style={{ width: "95%" }}
           type="text"
           value={country}
           onChange={(e) => {
@@ -22,6 +31,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
       <label>
         Street Address
         <input
+          style={{ width: "95%" }}
           type="text"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
@@ -33,6 +43,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
         <label>
           City
           <input
+          className='city-input'
             type="text"
             value={city}
             onChange={(e) => {
@@ -45,6 +56,7 @@ export default function FormLocation({city, setCity, address, setAddress, countr
         <label>
           State
           <input
+             className='state-input'
             type="text"
             value={state}
             onChange={(e) => {
