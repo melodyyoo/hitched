@@ -3,10 +3,11 @@ import FormLocation from "./FormLocation";
 import FormDescription from "./FormDescription";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {  useState } from "react";
-import {  thunkUpdateASpot } from "../../../store/spots";
+import { useState } from "react";
+import { thunkUpdateASpot } from "../../../store/spots";
+import "./UpdateSpot.css";
 
-export default function UpdateSpot({newSpot, id}) {
+export default function UpdateSpot({ newSpot, id }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [description, setDescription] = useState(newSpot.description);
@@ -37,20 +38,18 @@ export default function UpdateSpot({newSpot, id}) {
     const tempErrors = {};
     if (description.length < 30) tempErrors.description = "Description needs a minimum of 30 characters";
 
-
-    const tempErrorsArray = Object.values(tempErrors)
-    if(tempErrorsArray.length > 0){
-
-      setErrors(tempErrors)
-    }else{
-      dispatch(thunkUpdateASpot(newSpot,id))
-      .then((spot)=> history.push(`/spots/${spot.id}`))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors({ ...data.errors, ...errors });
-        }
-      });
+    const tempErrorsArray = Object.values(tempErrors);
+    if (tempErrorsArray.length > 0) {
+      setErrors(tempErrors);
+    } else {
+      dispatch(thunkUpdateASpot(newSpot, id))
+        .then((spot) => history.push(`/spots/${spot.id}`))
+        .catch(async (res) => {
+          const data = await res.json();
+          if (data && data.errors) {
+            setErrors({ ...data.errors, ...errors });
+          }
+        });
     }
   };
 
@@ -73,6 +72,7 @@ export default function UpdateSpot({newSpot, id}) {
           <h2>Create a title for your spot</h2>
           <p>Catch guests' attention with a spot title that highlights what makes your place special.</p>
           <input
+            style={{ width: "95%" }}
             type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
@@ -83,19 +83,22 @@ export default function UpdateSpot({newSpot, id}) {
         <div className="form-element">
           <h2>Set a base price for your spot</h2>
           <p>Competitive pricing can help your listing stand out and rank higher in search results.</p>
-          <label>
-            $
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <label style={{ width: "fit-content" }} for="price">
+              $
+            </label>
             <input
+              style={{ width: "100%" }}
               type="text"
+              required
               onChange={(e) => setPrice(e.target.value)}
               value={price}
-              required
               placeholder="Price per night (USD)"
             ></input>
-          </label>
+          </div>
         </div>
-        <div className="submit-button" style={{ display: "flex", alignItems: "center" }}>
-          <button type="submit" style={{ width: "25%", marginTop: "5%", all:'unset' }}>
+        <div className="submit-button" style={{ display: "flex", justifyContent: "center" }}>
+          <button type="submit" style={{ width: "25%", marginTop: "5%", all: "unset" }}>
             Update Spot
           </button>
         </div>
