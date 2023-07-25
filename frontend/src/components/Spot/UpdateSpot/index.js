@@ -84,7 +84,7 @@ export default function UpdateSpot({ newSpot, id }) {
           <h2>Set a base price for your spot</h2>
           <p>Competitive pricing can help your listing stand out and rank higher in search results.</p>
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <label style={{ width: "fit-content" }} for="price">
+            <label style={{ width: "fit-content" }} htmlFor="price">
               $
             </label>
             <input
