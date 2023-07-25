@@ -25,7 +25,7 @@ const SpotTile = ({ previewImage, location, price, avgRating, id , name}) => {
     <>
       <div className="spot-tile" onClick={(e) => history.push(`/spots/${id}`)}>
         <div className="hover-text">
-          <span class="tooltip-text">{name}</span>
+          <span className="tooltip-text">{name}</span>
         </div>
         {image}
         <div className="location-and-rating">
