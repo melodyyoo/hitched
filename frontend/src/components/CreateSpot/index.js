@@ -39,7 +39,6 @@ export default function CreateSpot() {
       price,
     };
 
-    //create a separate object for the image url
     const imagesArray = [
       {
         url: previewUrl,
@@ -51,40 +50,33 @@ export default function CreateSpot() {
       { url: url4, preview: false },
     ];
 
-    //create a temp errors object
     const tempErrors = {};
+    if (isNaN(price))tempErrors.price = "Price must be a valid decimal."
 
-    //do checks and create keys for custom validation errors
-    if (description.length < 30) tempErrors.description = "Description needs a minimum of 30 characters";
+    if (description.length < 30) tempErrors.description = "Description needs a minimum of 30 characters.";
+    if(description.length > 600) tempErrors.description = "Description must be less than 600 characters."
 
     if (
       previewUrl &&
       !previewUrl.endsWith(".png") &&
-      previewUrl &&
       !previewUrl.endsWith(".jpg") &&
-      previewUrl &&
       !previewUrl.endsWith(".jpeg")
-    )
+      )
       tempErrors.previewUrl = "Image URL must end in .png, .jpg, or .jpeg";
-    if (url1 && !url1.endsWith(".png") && url1 && !url1.endsWith(".jpg") && url1 && !url1.endsWith(".jpeg"))
+      if (url1 && !url1.endsWith(".png") && url1 && !url1.endsWith(".jpg") && url1 && !url1.endsWith(".jpeg"))
       tempErrors.url1 = "Image URL must end in .png, .jpg, or .jpeg";
-    if (url2 && !url2.endsWith(".png") && url2 && !url2.endsWith(".jpg") && url2 && !url2.endsWith(".jpeg"))
+      if (url2 && !url2.endsWith(".png") && url2 && !url2.endsWith(".jpg") && url2 && !url2.endsWith(".jpeg"))
       tempErrors.url2 = "Image URL must end in .png, .jpg, or .jpeg";
-    if (url3 && !url3.endsWith(".png") && url3 && !url3.endsWith(".jpg") && url3 && !url3.endsWith(".jpeg"))
+      if (url3 && !url3.endsWith(".png") && url3 && !url3.endsWith(".jpg") && url3 && !url3.endsWith(".jpeg"))
       tempErrors.url3 = "Image URL must end in .png, .jpg, or .jpeg";
-    if (url4 && !url4.endsWith(".png") && url4 && !url4.endsWith(".jpg") && url4 && !url4.endsWith(".jpeg"))
+      if (url4 && !url4.endsWith(".png") && url4 && !url4.endsWith(".jpg") && url4 && !url4.endsWith(".jpeg"))
       tempErrors.url4 = "Image URL must end in .png, .jpg, or .jpeg";
 
-    //if temp errors object .length > 0, setErrors(tempObject) and DON'T run thunk just display errors
-    //else, if no errors, dispatch the thunk
-    //then check return value of thunk for errors
-    //if no errors, history.push
-    //if errors, setErrors(error repsonse)
-    const tempErrorsArray = Object.values(tempErrors);
-    if (tempErrorsArray.length > 0) {
-      setErrors(tempErrors);
-    } else {
-      dispatch(thunkCreateASpot(newSpot, imagesArray))
+      const tempErrorsArray = Object.values(tempErrors);
+      if (tempErrorsArray.length > 0) {
+        setErrors(tempErrors);
+      } else {
+        dispatch(thunkCreateASpot(newSpot, imagesArray))
         .then((spot) => history.push(`/spots/${spot.id}`))
         .catch(async (res) => {
           const data = await res.json();
@@ -126,8 +118,8 @@ export default function CreateSpot() {
         <div className="form-element">
           <h2>Set a base price for your spot</h2>
           <p>Competitive pricing can help your listing stand out and rank higher in search results.</p>
-          <div style={{display: 'flex', flexDirection:'row'}}>
-            <label style={{ width: "fit-content" }} for="price">
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <label style={{ width: "fit-content" }} htmlFor="price">
               $
             </label>
             <input

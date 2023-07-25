@@ -34,10 +34,10 @@ router.get("/", async (req, res) => {
 
     if (jsonImage.preview === true) {
       spot.dataValues.previewImage = jsonImage.url;
-    } else{
+    } else {
       spot.dataValues.previewImage = "No preview image available";
     }
-    
+
     updatedSpots.push(spot.toJSON());
   }
 
@@ -118,41 +118,18 @@ router.post("/", requireAuth, async (req, res, next) => {
   const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
   const error = { message: "Bad Request", errors: {} };
-  if (!address) {
-    error.errors.address = "Street address is required";
-  }
+  if (!address)error.errors.address = "Street address is required";
+  if (!city)error.errors.city = "City is required";
+  if (!state)error.errors.state = "State is required";
+  if (!country)error.errors.country = "Country is required";
+  if(!price)error.errors.price = "Price per day is required";
+  if (!description)error.errors.description = "Description is required";
+  if(!name)error.errors.name = "Name is required";
+  
+  if (name.length > 50)error.errors.name = "Name must be less than 50 characters";
 
-  if (!city) {
-    error.errors.city = "City is required";
-  }
+  if (description.length > 600) error.errors.description = "Description must be less than 600 characters.";
 
-  if (!state) {
-    error.errors.state = "State is required";
-  }
-
-  if (!country) {
-    error.errors.country = "Country is required";
-  }
-
-  // if (!lat || typeof lat !== "number") {
-  //   error.errors.lat = "Latitude is not valid";
-  // }
-
-  // if (!lng || typeof lng !== "number") {
-  //   error.errors.lng = "Longitude is not valid";
-  // }
-
-  if (!name || name.length > 50) {
-    error.errors.name = "Name must be less than 50 characters";
-  }
-
-  if (!description) {
-    error.errors.description = "Description is required";
-  }
-
-  if (!price) {
-    error.errors.price = "Price per day is required";
-  }
 
   if (Object.keys(error.errors).length) {
     res.status(400);
