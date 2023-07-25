@@ -24,6 +24,7 @@ export default function UpdateSpot({ newSpot, id }) {
     e.preventDefault();
     setErrors({});
 
+
     //compile the form info into a spot object
     const newSpot = {
       address,
@@ -36,7 +37,10 @@ export default function UpdateSpot({ newSpot, id }) {
     };
 
     const tempErrors = {};
+    if (isNaN(price))tempErrors.price = "Price must be a valid decimal."
     if (description.length < 30) tempErrors.description = "Description needs a minimum of 30 characters";
+    if(description.length > 600) tempErrors.description = "Description must be less than 600 characters."
+    if (title.length > 50)tempErrors.name = "Name must be less than 50 characters";
 
     const tempErrorsArray = Object.values(tempErrors);
     if (tempErrorsArray.length > 0) {
@@ -79,6 +83,7 @@ export default function UpdateSpot({ newSpot, id }) {
             placeholder="Name of your spot"
             required
           ></input>
+          <div className="errors">{errors.name}</div>
         </div>
         <div className="form-element">
           <h2>Set a base price for your spot</h2>
@@ -97,6 +102,7 @@ export default function UpdateSpot({ newSpot, id }) {
             ></input>
           </div>
         </div>
+        <div className="errors">{errors.price}</div>
         <div className="submit-button" style={{ display: "flex", justifyContent: "center" }}>
           <button type="submit" style={{ width: "25%", marginTop: "5%", all: "unset" }}>
             Update Spot

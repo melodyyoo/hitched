@@ -125,7 +125,7 @@ router.post("/", requireAuth, async (req, res, next) => {
   if(!price)error.errors.price = "Price per day is required";
   if (!description)error.errors.description = "Description is required";
   if(!name)error.errors.name = "Name is required";
-  
+
   if (name.length > 50)error.errors.name = "Name must be less than 50 characters";
 
   if (description.length > 600) error.errors.description = "Description must be less than 600 characters.";
@@ -403,33 +403,17 @@ router.put("/:spotId", requireAuth, async (req, res, next) => {
     if (spot.dataValues.ownerId === req.user.id) {
       const { address, city, state, country, name, description, price } = req.body;
       const error = { message: "Bad Request", errors: {} };
-      if (!address) {
-        error.errors.address = "Street address is required";
-      }
+      if (!address)error.errors.address = "Street address is required";
+      if (!city)error.errors.address = "City is required";
+      if (!state)error.errors.state = "State is required";
+      if (!country)error.errors.country = "Country is required";
+      if(!name)error.errors.name = "Name is required";
+      if (!description)error.errors.description = "Description is required";
+      if (!price)error.errors.price = "Price per day is required";
 
-      if (!city) {
-        error.errors.address = "City is required";
-      }
+      if (name.length > 50)error.errors.name = "Name must be less than 50 characters";
+      if (description.length > 600) error.errors.description = "Description must be less than 600 characters.";
 
-      if (!state) {
-        error.errors.state = "State is required";
-      }
-
-      if (!country) {
-        error.errors.country = "Country is required";
-      }
-
-      if (!name || name.length > 50) {
-        error.errors.name = "Name must be less than 50 characters";
-      }
-
-      if (!description) {
-        error.errors.description = "Description is required";
-      }
-
-      if (!price) {
-        error.errors.price = "Price per day is required";
-      }
 
       if (Object.keys(error.errors).length) {
         res.status(400);

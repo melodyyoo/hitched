@@ -55,6 +55,7 @@ export default function CreateSpot() {
 
     if (description.length < 30) tempErrors.description = "Description needs a minimum of 30 characters.";
     if(description.length > 600) tempErrors.description = "Description must be less than 600 characters."
+    if (title.length > 50)tempErrors.name = "Name must be less than 50 characters";
 
     if (
       previewUrl &&
