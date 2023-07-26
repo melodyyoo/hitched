@@ -5,7 +5,7 @@ import SingleReview from "../SingleReview";
 import { AverageStarRatingBig } from "../../Spot/AverageStarRating";
 import CreateAReviewButton from "../CreateAReviewModal/CreateAReviewButton";
 
-export default function ReviewList({ avgStarRating, numReviews, Owner, id: spotId }) {
+export default function ReviewList({ avgStarRating, numReviews, Owner, spotId }) {
   const dispatch = useDispatch();
   const allReviews = useSelector((state) => state.reviews.allReviews);
   const user = useSelector((state) => state.session.user);
@@ -19,6 +19,7 @@ export default function ReviewList({ avgStarRating, numReviews, Owner, id: spotI
   }, [dispatch, spotId, user]);
 
   const reviewsArray = Object.values(allReviews);
+  const sortedReviews = reviewsArray.sort((a, b)=>new Date(b.createdAt) - new Date(a.createdAt))
   const usersReviewsArray = Object.values(usersReviews);
 
   const userHasSpotReviewCheck = () => {
@@ -30,6 +31,7 @@ export default function ReviewList({ avgStarRating, numReviews, Owner, id: spotI
 
   if (!allReviews) return null;
 
+
   return (
     <div>
       <AverageStarRatingBig numReviews={numReviews} avgStarRating={avgStarRating} />
@@ -38,7 +40,7 @@ export default function ReviewList({ avgStarRating, numReviews, Owner, id: spotI
       )}
       {reviewsArray.length > 0 ? (
         <div className="list-of-reviews">
-          {reviewsArray.map((review) => {
+          {sortedReviews.map((review) => {
             return (
               <SingleReview
                 key={review.id}
