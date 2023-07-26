@@ -36,7 +36,7 @@ export default function CreateAReviewModal({spotId}){
         };
 
         dispatch(thunkCreateAReview(newReview,spotId, user))
-        .then(window.location.reload(true))
+        .then(closeModal())
         .catch(async(res)=>{
             const data = await res.json();
             if(data && data.errors){
