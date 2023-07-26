@@ -5,15 +5,16 @@ import { thunkGetSingleSpot } from "../../../store/spots";
 import "./SpotDetails.css";
 import ReviewList from "../../Review/ReviewList";
 import { AverageStarRatingSmall } from "../AverageStarRating";
+import { Link } from "react-router-dom";
 
 export default function SpotDetails() {
-  const { id } = useParams();
+  const { spotId } = useParams();
   const dispatch = useDispatch();
   const spot = useSelector((state) => state.spots.singleSpot);
 
   useEffect(() => {
-    dispatch(thunkGetSingleSpot(id));
-  }, [dispatch, id]);
+    dispatch(thunkGetSingleSpot(spotId));
+  }, [dispatch, spotId]);
 
   if (!spot) return null;
 
@@ -31,13 +32,12 @@ export default function SpotDetails() {
 
   if (!SpotImages) return null;
 
-
   const previewImage =
     SpotImages[0] != null ? <img className="preview-image" src={SpotImages[0].url} alt="Spot" /> : null;
   return (
     <>
       <div className="spot-details-div">
-        <h1 style={{ textAlign: "left" }}>{name}</h1>
+        <h1 style={{ textAlign: "left", fontWeight:"400" }}>{name}</h1>
         <h4>
           {city}, {state}, {country}
         </h4>
@@ -68,16 +68,16 @@ export default function SpotDetails() {
                 <AverageStarRatingSmall avgStarRating={avgStarRating} numReviews={numReviews} />
               </div>
               <div className="reserve-button-div">
-                <button className="reserve-button" onClick={(e) => window.alert("Feature coming soon...")}>
-                  Reserve
-                </button>
+                <Link to={`/bookings/${spotId}`}>
+                  <button className="reserve-button">Reserve</button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="review-list-div">
-        <ReviewList id={id} Owner={Owner} avgStarRating={avgStarRating} numReviews={numReviews} />
+        <ReviewList spotId={spotId} Owner={Owner} avgStarRating={avgStarRating} numReviews={numReviews} />
       </div>
     </>
   );
