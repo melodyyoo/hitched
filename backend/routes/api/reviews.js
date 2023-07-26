@@ -30,7 +30,7 @@ router.get('/current', requireAuth, async (req,res,next)=>{
                 id: newReview.spotId
             }
         });
-     
+
         const spotImages = await spot.getSpotImages();
 
         for(let i =0; i< spotImages.length; i++){
@@ -142,7 +142,7 @@ router.put('/:reviewId', requireAuth, async(req,res,next)=>{
 //delete a review
 router.delete('/:reviewId', requireAuth, async(req,res,next)=>{
     const findReview = await Review.findOne({
-        where: {id: req.params.reviewId}
+        where: {id: parseInt(req.params.reviewId)}
     });
 
     if(findReview){
