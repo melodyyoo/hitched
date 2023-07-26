@@ -8,6 +8,7 @@ export default function DeleteReviewModal({reviewId}) {
     const { closeModal } = useModal();
 
     const onSubmit = async()=>{
+        closeModal()
         dispatch(thunkDeleteAReview(reviewId))
     }
 
