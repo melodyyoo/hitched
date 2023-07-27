@@ -65,13 +65,19 @@ function ProfileButton({ user }) {
                 className="manage-spots"
                 onClick={(e) => history.push("/spots/current")}
               >
-                Manage Spots
+                My Spots
               </button>
               <button
                 className="manage-reviews"
                 onClick={(e) => history.push("/reviews/current")}
               >
-                Manage Reviews
+                My Reviews
+              </button>
+              <button
+                className="manage-bookings"
+                onClick={(e) => history.push("/bookings/current")}
+              >
+                My Bookings
               </button>
               <p style={{textAlign:'center'}}>
                 <button style={{cursor: 'pointer'}} className="log-out-button" onClick={logout}>Log Out</button>

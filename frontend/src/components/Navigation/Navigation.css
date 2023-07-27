@@ -25,14 +25,15 @@
 }
 
 .manage-spots,
-.manage-reviews {
+.manage-reviews,
+.manage-bookings{
   all: unset;
   cursor: pointer;
   text-align: center;
   position: relative;
   top: -15px;
 }
-.manage-spots {
+.manage-spots, .manage-reviews {
   margin-bottom: 8px;
 }
 
