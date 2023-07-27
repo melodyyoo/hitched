@@ -15,7 +15,7 @@ function Navigation({ isLoaded }) {
       </NavLink>
 
       <div style={{display:'flex'}}>
-        {sessionUser && <NavLink style={{marginRight: 15, textDecoration: 'none', color: 'black', fontSize:14, marginTop: 12}}to="/spots/new">Create a New Spot</NavLink>}
+        {sessionUser && <NavLink style={{marginRight: 15, textDecoration: 'none', color: 'black', fontSize:14, marginTop: 12}}to="/spots/new">Create a New Venue</NavLink>}
         {isLoaded && <ProfileButton user={sessionUser} />}
       </div>
     </div>
