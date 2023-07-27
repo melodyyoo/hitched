@@ -15,7 +15,7 @@ export default function ManageReviews() {
 
   return (
     <>
-    <h1>Manage Reviews</h1>
+    <h1 style={{fontWeight:"400"}}>Manage Your Reviews</h1>
     <div className="list-of-reviews">
       {usersReviewsArray.map(({  Spot, review, createdAt, id }, i) => {
         return <ManageReviewsSingleReview key={i} createdAt={createdAt} review={review} Spot={Spot} id={id}/>;

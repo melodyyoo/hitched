@@ -25,7 +25,7 @@ export default function ManageSpots() {
   return (
     <>
       <div>
-        <h1>Manage Your Spots</h1>
+        <h1 style={{fontWeight:"400"}}>Manage Your Spots</h1>
         <button style={{marginLeft: 34, boxShadow: '4px 4px 5px rgb(151, 150, 150)', cursor:'pointer'}} onClick={(e) => history.push("/spots/new")}>Create a New Spot</button>
       </div>
       <div className="spot-tiles">
@@ -41,8 +41,8 @@ export default function ManageSpots() {
                 id={id}
                 name={name}
               />
-              <div className="update-delete-buttons">
-                <button style={{ boxShadow: '4px 4px 5px rgb(151, 150, 150)', cursor:'pointer'}} onClick={e=>{dispatch(thunkGetSingleSpot(id)).then(()=>history.push(`/spots/${id}/edit`))}}>Update</button>
+              <div style={{display:"flex", alignItems:"center", gap:"10px"}}>
+                <button style={{ boxShadow: '4px 4px 5px rgb(151, 150, 150)', cursor:'pointer', height:"23px"}} onClick={e=>{dispatch(thunkGetSingleSpot(id)).then(()=>history.push(`/spots/${id}/edit`))}}>Update</button>
                 <p>
                   <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal id={id}/>} />
                 </p>

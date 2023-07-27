@@ -10,6 +10,8 @@ import ManageSpots from "./components/Spot/ManageSpots";
 import CreateSpot from "./components/CreateSpot";
 import FormWrapper from "./components/Spot/UpdateSpot/FormWrapper";
 import ManageReviews from "./components/Review/ManageReviews";
+import CreateBooking from "./components/Bookings/CreateBooking";
+import UsersBookings from "./components/Bookings/UsersBookings";
 
 
 function App() {
@@ -27,9 +29,11 @@ function App() {
         <Route exact path='/'component={SpotTiles}/>
         <Route exact path='/spots/current' component={ManageSpots}/>
         <Route exact path='/spots/new' component={CreateSpot}/>
-        <Route exact path='/spots/:id' component={SpotDetails}/>
+        <Route exact path='/spots/:spotId' component={SpotDetails}/>
         <Route exact path='/spots/:id/edit' component={FormWrapper}/>
         <Route exact path='/reviews/current' component={ManageReviews}/>
+        <Route exact path='/bookings/current' component={UsersBookings}/>
+        <Route exact path='/bookings/:spotId' component={CreateBooking}/>
       </Switch>
       }
     </>
