@@ -105,7 +105,7 @@ export default function UpdateSpot({ newSpot, id }) {
         <div className="errors">{errors.price}</div>
         <div className="submit-button" style={{ display: "flex", justifyContent: "center" }}>
           <button type="submit" style={{ width: "25%", marginTop: "5%", all: "unset" }}>
-            Update Spot
+            Update Venue
           </button>
         </div>
       </form>

@@ -25,8 +25,8 @@ export default function ManageSpots() {
   return (
     <>
       <div>
-        <h1 style={{fontWeight:"400"}}>Manage Your Spots</h1>
-        <button style={{marginLeft: 34, boxShadow: '4px 4px 5px rgb(151, 150, 150)', cursor:'pointer'}} onClick={(e) => history.push("/spots/new")}>Create a New Spot</button>
+        <h1 style={{fontWeight:"400"}}>Manage Your Venues</h1>
+        <button style={{marginLeft: 34, boxShadow: '4px 4px 5px rgb(151, 150, 150)', cursor:'pointer'}} onClick={(e) => history.push("/spots/new")}>Create a New Venue</button>
       </div>
       <div className="spot-tiles">
         {usersSpotsArray.map(({ id, price, city, state, avgRating, previewImage , name}) => {
