@@ -65,7 +65,7 @@ function ProfileButton({ user }) {
                 className="manage-spots"
                 onClick={(e) => history.push("/spots/current")}
               >
-                My Spots
+                My Venues
               </button>
               <button
                 className="manage-reviews"
