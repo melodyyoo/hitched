@@ -3,6 +3,9 @@ This app is a wedding venue themed AirBnB clone. Full CRUD functionality is curr
 
 Check out hitched [here](https://air-bnb-a62t.onrender.com). 
 
+## Index
+[Database Schema](https://github.com/melodyyoo/hitched/wiki/Database-Schema-Design) | [API Documentation](https://github.com/melodyyoo/hitched/wiki/API-Documentation) | [Redux Store Shape]() | [Backend Reflection](https://github.com/melodyyoo/hitched/wiki/Backend-Reflection)
+
 ## Database Schema Design
 
 ![db-schema]
