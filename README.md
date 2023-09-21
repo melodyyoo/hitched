@@ -1,4 +1,7 @@
 # hitched
+This app is a wedding venue themed AirBnB clone. Full CRUD functionality is currently available for creating, rating, and reviewing venues. The booking feature is still in development. 
+
+Check out hitched [here](https://air-bnb-a62t.onrender.com). 
 
 ## Database Schema Design
 
